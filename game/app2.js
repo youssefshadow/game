@@ -8,9 +8,10 @@ const app = Vue.createApp({
         winner: null,
         battleLogMessages: [],
         attackDamage: 20,
-        specialDamage: 35,
-        dragonAttack: 19,
+        specialDamage: 30,
+        dragonAttack: 25,
         healValue: 15,
+        isVisible: false,
       };
     },
     watch: {
@@ -82,7 +83,8 @@ const app = Vue.createApp({
         if (this.warriorHealth - attackDamage < 0) {
           this.warriorHealth = 0;
         } else {
-          this.warriorHealth -= attackDamage;
+          this.dragonHealth -= attackDamage;
+          this.warriorHealth -= this.dragonAttack;
         }
   
         this.addBattleLog("dragon", "attack", attackDamage);
@@ -93,9 +95,10 @@ const app = Vue.createApp({
           this.dragonHealth = 0;
         } else {
           this.dragonHealth -= this.specialDamage;
+          this.warriorHealth -= this.dragonAttack;
         }
         this.addBattleLog("warrior", "special-attack", this.specialDamage);
-        this.attackWarrior();
+        
       },
       heal() {
         this.numOfHeal--;
@@ -105,7 +108,7 @@ const app = Vue.createApp({
           this.warriorHealth += this.healValue;
         }
         this.addBattleLog("warrior", "heal", this.healValue);
-        this.attackWarrior();
+
       },
       forfeit() {
         this.winner = "dragon";
@@ -122,4 +125,3 @@ const app = Vue.createApp({
   
   app.mount('#monApp');
 
-  

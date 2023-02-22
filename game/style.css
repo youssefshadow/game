@@ -10,10 +10,23 @@ body {
   background-color: #03071E;
   color: #fff;
 }
+#monJeu{
+  border: 1px solid black;
+  border-radius: 20px;
+  padding: 10% 0;
+  background-image: url(bg2.gif);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
+}
 .wrapper {
   width: 100%;
   min-height: 100vh;
   position: relative;
+  background-color: white;
+  max-width: 60%;
+  margin: auto;
 }
 header {
   background-color: #370617;
@@ -52,7 +65,7 @@ header {
   position: absolute;
   left: 50%;
   font-size: 0.8rem;
-  color: #fff;
+  color: #0C1427;
 }
 /*CONTROLS*/
 .controls {
@@ -108,7 +121,7 @@ header {
   margin: 0 auto;
   padding: 1rem;
   border-radius: 0.3rem;
-  background: #370617;
+  background: #FF5C5C;
   color: #fff;
 }
 .logs li {
@@ -158,8 +171,8 @@ button[disabled] img:hover {
   z-index: 100;
 }
 .overlap .winner {
-  background: #dc2f02;
-  color: #fff;
+  background: #FF5C5C;
+  color: #0C1427;
   width: 300px;
   height: 300px;
   border-radius: 10px;

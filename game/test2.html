@@ -9,11 +9,12 @@
   <link rel="stylesheet" href="style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous" />
-  <title>Les Copains D'abord</title>
+  <title>La bagarre👊</title>
 </head>
 
 <body>
   <div id="monApp">
+    <div id="monJeu">
     <div class="wrapper">
       <TheHeader />
       <div class="container">
@@ -24,7 +25,7 @@
                 <span class="hp-percent">{{ warriorHealth }} %</span>
               </div>
             </div>
-            <p class="text-center">Warrior</p>
+            <p class="text-center">Jean Mich</p>
             <div class="img-container">
               <img src="warrior1.gif" alt="warrior" />
             </div>
@@ -51,7 +52,7 @@
               <img src="specialAttack.png" alt="special_attack" />
               <span class="num-of-attempt">{{ numOfSpecialAttack }}</span>
             </button>
-            <button class="control-icon" @click="heal" :disabled="numOfHeal === 0">
+            <button class="control-icon" @click="heal()" :disabled="numOfHeal === 0">
               <img src="heal.png" alt="heal" /><span class="num-of-attempt">{{ numOfHeal }}</span>
             </button>
             <button class="control-icon" @click="forfeit">
@@ -61,14 +62,14 @@
         </div>
         <div class="row mt-5">
           <div class="container">
-            <h4 class="text-center">Battle Logs</h4>
+            <h4 class="text-center">Commentateur🎤</h4>
             <ul class="col-md-5 logs">
               <li v-for="(logMessage, index) in battleLogMessages" :key="index" class="text-center">
                 <span :class="{
                           warrior: logMessage.attacker === 'warrior',
-                          dragon: logMessage.attacker === 'dragon'
-                        }">
-                  {{ logMessage.attacker === 'warrior' ? `<img src='./gifs/warrior1.gif' alt="dragon">` : 'dragon'}}
+                          dragon: logMessage.attacker === 'dragon'}">
+
+                  {{ logMessage.attacker === 'warrior' ? `<img src='dragon.gif' alt="dragon">` : 'dragon'}}
                   <img src="warrior1.gif" alt="warrior" v-if="logMessage.attacker === 'warrior'" class="img-icon" />
                   <img src="dragon.gif" alt="warrior" v-else class="img-icon" />
                 </span>
@@ -77,33 +78,47 @@
                   <span class="log-heal">{{ logMessage.actionValue }} hp</span>
                 </span>
                 <span v-else-if="logMessage.actionType === 'attack'">
-                  attack and deals
-                  <span class="log-damage">{{ logMessage.actionValue }} of damage</span>
+                  Attaque et fait
+                  <span class="log-damage">{{ logMessage.actionValue }} de dégats</span>
                 </span>
                 <span v-else-if="logMessage.actionType === 'special-attack'">
-                  use special attack and deals
-                  <span class="log--damage">{{ logMessage.actionValue }} of damage</span>
+                  utilise super attaque et fait
+                  <span class="log--damage">{{ logMessage.actionValue }} de dégats</span>
                 </span>
               </li>
             </ul>
           </div>
         </div>
+        <div >
+          <button @click="isVisible = !isVisible" class="btn btn-primary mt-3">Commandes⚙️</button>
+          <div v-show="isVisible">
+            <ul>
+              <li><img src="attack.png" alt=""> attaquer</li>
+              <li><img src="specialAttack.png" alt="">attaque speciale</li>
+              <li><img src="white.png" alt="">se rendre</li>
+              <li><img src="heal.png" alt="">se soigner</li>
+            </ul>
+          </div>
+          
+        </div>
+        
       </div>
       <div class="overlap" v-if="winner">
         <div class="winner">
           <div class="text-center">
-            <h3>Game Over!</h3>
-            <h4 v-if="winner === 'dragon'">You Lose!</h4>
-            <h4 v-else-if="winner === 'warrior'">You Win!</h4>
-            <h4 v-else-if="winner === 'draw'">It's a Draw!</h4>
+            <h3>Game Over!☠️</h3>
+            <h4 v-if="winner === 'dragon'">Perdu!👎 </h4>
+            <h4 v-else-if="winner === 'warrior'">Gagné!🥳</h4>
+            <h4 v-else-if="winner === 'draw'">Match nul📏</h4>
             <button @click="startFight" class="btn start-btn mt-4">
-              Battle Again
+              Revanche
             </button>
           </div>
         </div>
       </div>
     </div>
   </div>
+</div>
 
   <!-- script pour contacter VUE -->
   <script src="https://unpkg.com/vue@next"></script>
