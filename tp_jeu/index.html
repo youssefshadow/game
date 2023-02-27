@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS v5.2.0-beta1 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"  integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body >
+    <div id="AppCombat">
+        <div class="ZoneCombat">
+            <div class="AffichageCombat">
+                <div class="Image">
+                    <img style="padding-left: 100%;"src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/4c85d0fa-3382-4b99-9a1b-4eee74dcd38c/day61a2-eab890db-40e3-4f19-aa5c-9d66e92c03f4.gif?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcLzRjODVkMGZhLTMzODItNGI5OS05YTFiLTRlZWU3NGRjZDM4Y1wvZGF5NjFhMi1lYWI4OTBkYi00MGUzLTRmMTktYWE1Yy05ZDY2ZTkyYzAzZjQuZ2lmIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.me_keXyqSJ1hrxbffnsgFnwgMvHp3Ej1Rp1w7Uqd9CY">
+                </div>
+                <div></div>
+                <div class="Image">
+                    <img src="Neo_Ridley_Animation.webp">
+                </div>  
+            </div>
+        </div>
+        <div class="AffichagePerso">
+            <div class="Perso" style="padding-left: 35%;">
+                <div class="lePerso">
+                    <div class="InfoPerso">
+                        Samus
+                    </div>
+                    <div class="InfoPerso">
+                        <div class="BarreVie">
+                            <div class="PvJoueur" :style="playerHealthBar">
+                                <span>{{playerLife}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div></div>
+            <div class="Perso" style="padding-right: 35%;">
+                <div class="lePerso">
+                    <div class="InfoPerso">
+                        Monstre
+                    </div>
+                    <div class="InfoPerso">
+                        <div class="BarreVie">
+                            <div class="PvMonstre" :style="enemyHealthBar">
+                                <span>{{enemyLife}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div> 
+        <div class="Rapport">                    
+            <div class="ZoneButtons">
+                <button class="button" @click="playerAttack()"><img src="Attaque.png"></button>
+                <br/>
+                <button class="button" @click="specialAttack()" :disabled="playerLife>50 || nbSpecial===0"><img src="Special.png"></button> 
+                <br/>
+                <button class="button" @click="healthCare()" :disabled="nbHeathCare===0"><img src="Heal.png"></button>
+                <br/>
+                <button class="button" @click="giveUp()"><img src="Run.png"></button>
+            </div>
+            <div class="ZoneBattleLogs">
+                <h2>Rapport de Combats :</h2>
+                <div class="ListeAction">
+                    <p v-for="log in logs"> {{log}}</p>
+                </div>
+            </div>
+        </div>
+        <div class="overlap" v-if="winner">
+            <div class="winner">
+              <div class="text-center">
+                <h3>Partie terminée!☠️</h3>
+                <h4 v-if="winner === 'Monstre'">Perdu!👎 </h4>
+                <h4 v-else-if="winner === 'Samus'">Gagné!🥳</h4>
+                <h4 v-else-if="winner === 'none'">Match nul📏</h4>
+                <br>
+                <button @click="startFight" class="btn btn-warning">
+                  Revanche
+                </button>
+              </div>
+            </div>
+        </div>   
+    </div>
+    <!-- script pour contacter VUE -->
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="app.js"></script>
+    <!-- Bootstrap JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js" integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous"></script>
+</body>
+</html>

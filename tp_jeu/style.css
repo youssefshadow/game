@@ -1,0 +1,119 @@
+/*Game Over Display*/
+.overlap {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgb(19, 18, 18, 0.95);
+  z-index: 100;
+}
+.overlap .winner {
+  background: #4D455D;
+  color: #eeeef0;
+  width: 300px;
+  height: 300px;
+  border-radius: 10px;
+  margin: auto;
+  margin-top: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+body{
+    background-color: #385056;
+    color: #cda124    ;
+    font-weight: bold;
+}
+.AffichageCombat{
+
+    background-image:url(Background1.png);
+    background-size:cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: 0%;
+    padding: 0%;
+    width: 100%;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+}
+.Image{
+    display:inline-block;
+    padding-top: 20%;
+    width: 250px;
+}
+.AffichagePerso{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    padding-top: 1%;
+}
+.Perso{
+    display: inline-block;
+}
+.lePerso{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+
+}
+.InfoPerso{
+    display: inline-block;
+    font-size: 27px;
+}
+.BarreVie{
+    background-color: aliceblue;
+    width: 300px;
+    height: 40px;
+}
+
+.Rapport{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 10px;
+    grid-auto-rows: minmax(100px, auto);
+    padding-left: 3%;
+}
+
+.ZoneButtons{
+    align-items: center;
+    align-content: center;
+}
+
+.button{
+
+    color: #cda124;
+    background-color: #739072;
+    border-color: #d6d7b8;
+    border-radius:5px;
+    border: outset 3px;
+    margin-bottom: 2%;
+}
+.button:disabled {
+    color: #565654;
+    background-color: #474947;
+    border: inset 3px #565654;
+}
+
+.button:hover{
+    border: inset 3px;
+}
+
+.ZoneBattleLogs{
+    grid-column: 2/4;
+    text-align: center;
+}
+
+.ListeAction{
+    background-color: #d6d7b8;
+    border: outset 4px;
+    border-radius: 10px;
+    min-height:200px;
+    color:    #1d2b54;
+}
